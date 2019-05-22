@@ -1,13 +1,17 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import cors from 'cors'
+import bodyParser from 'body-parser'
+import routes from './routes'
 
-mongoose.connect('mongodb://localhost/flux')
+mongoose.connect('mongodb://localhost/flux', { useNewUrlParser: true }, () => {
+    console.log('Database connection succeed...')
+})
 
 const app = express()
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use(cors())
+app.use(bodyParser.json())
+app.use('/api', routes)
 
-app.listen(3000, () =>
-    console.log(`Server is listening on port 3000`))
-
-module.exports = app;
+app.listen(3001, () => console.log('App is running on port 3000'))

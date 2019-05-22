@@ -8,6 +8,7 @@
   "author": "Ahmad Shah Hafizan Hamidin",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.0",
     "mongoose": "^5.5.10"
   },
